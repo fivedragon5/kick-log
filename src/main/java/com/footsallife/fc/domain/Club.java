@@ -18,7 +18,4 @@ public class Club extends BaseEntity {
     @Column(name = "club_id")
     private Long id;
     private String name;
-
-    @OneToMany(mappedBy = "member")
-    Set<MemberClub> memberClubs = new HashSet<>();
 }
