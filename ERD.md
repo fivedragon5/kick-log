@@ -1,19 +1,27 @@
 # ERD
 ```mermaid
     erDiagram
-        CLUB {
-            INT club_id PK "클럽 고유번호"
-            VARCHAR name "클럽 이름"
-            DATETIME created_at "생성일"
-        }
-    
-        PLAYER {
-            INT player_id PK "회원 고유번호"
-            INT club_id FK "소속 클럽"
-            VARCHAR name "회원 이름"
-            VARCHAR phone "연락처"
-            DATETIME join_date "가입일"
-        }
+    CLUB {
+        INT club_id PK "클럽 고유번호"
+        VARCHAR name "클럽 이름"
+    }
+
+    MEMBER {
+        INT player_id PK "회원 고유번호"
+        VARCHAR name "회원 이름"
+        VARCHAR phone "연락처"
+        DATETIME joined_at "회원 가입일시"
+    }
+
+   CLUB_MEMBER {
+        INT id PK "고유번호"
+        INT player_id FK "회원"
+        INT club_id FK "클럽"
+        DATETIME joined_at "클럽 가입일시"
+    }
+
+    CLUB ||--o{ PLAYER_CLUB : "회원 소속"
+    PLAYER ||--o{ PLAYER_CLUB : "클럽 가입"
     
         MATCH {
             INT match_id PK "매치 고유번호"
