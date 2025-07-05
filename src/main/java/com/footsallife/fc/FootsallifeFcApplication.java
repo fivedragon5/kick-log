@@ -8,5 +8,4 @@ public class FootsallifeFcApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FootsallifeFcApplication.class, args);
 	}
-
 }
