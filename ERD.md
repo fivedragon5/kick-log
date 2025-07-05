@@ -7,7 +7,7 @@
     }
 
     MEMBER {
-        INT player_id PK "회원 고유번호"
+        INT member_id PK "회원 고유번호"
         VARCHAR name "회원 이름"
         VARCHAR phone "연락처"
         DATETIME joined_at "회원 가입일시"
@@ -15,14 +15,11 @@
 
    CLUB_MEMBER {
         INT id PK "고유번호"
-        INT player_id FK "회원"
+        INT member_id FK "회원"
         INT club_id FK "클럽"
         DATETIME joined_at "클럽 가입일시"
     }
-
-    CLUB ||--o{ PLAYER_CLUB : "회원 소속"
-    PLAYER ||--o{ PLAYER_CLUB : "클럽 가입"
-    
+ 
         MATCH {
             INT match_id PK "매치 고유번호"
             INT club_id FK "소속 클럽"
@@ -55,12 +52,12 @@
             BOOLEAN draw "무승부 여부 (선택)"
             VARCHAR note "기타 비고"
         }
-    
-        CLUB ||--o{ PLAYER : "소속"
-        CLUB ||--o{ MATCH : "주최"
+
+        CLUB ||--o{ MEMBER_CLUB : "회원 소속"
+        MEMBER ||--o{ MEMBER_CLUB : "클럽 가입"
         MATCH ||--o{ MATCH_TEAM : "팀 구성"
-        MATCH_TEAM ||--o{ MATCH_TEAM_PLAYER : "팀원"
-        PLAYER ||--o{ MATCH_TEAM_PLAYER : "참여"
+        MATCH_TEAM ||--o{ MATCH_TEAM_MEMBER : "팀원"
+        MEMBER ||--o{ MATCH_TEAM_MEMBER : "참여"
         MATCH ||--o{ MATCH_RESULT : "경기 결과"
         MATCH_TEAM ||--o{ MATCH_RESULT : "팀1 또는 팀2"
 ```
