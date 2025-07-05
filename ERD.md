@@ -13,7 +13,7 @@
             DATETIME joined_at "회원 가입일시"
         }
     
-       CLUB_MEMBER {
+       MEMBER_CLUB {
             INT id PK "고유번호"
             INT member_id FK "회원"
             INT club_id FK "클럽"
