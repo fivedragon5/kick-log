@@ -14,7 +14,6 @@ import lombok.Getter;
 @Getter
 public class MatchTeamMember extends BaseEntity {
     @Id @GeneratedValue
-    @Column(name = "match_team_member_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

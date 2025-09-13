@@ -1,5 +1,6 @@
 package com.footsallife.fc.domain;
 
+import com.footsallife.fc.common.type.MatchStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,7 +21,6 @@ import java.time.LocalDate;
 @Getter
 public class Match extends BaseEntity {
     @Id @GeneratedValue
-    @Column(name = "match_id")
     private Long id;
 
     private LocalDate matchDate;

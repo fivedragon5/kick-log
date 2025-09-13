@@ -13,7 +13,6 @@ import lombok.Getter;
 @Getter
 public class MatchResult extends BaseEntity {
     @Id @GeneratedValue
-    @Column(name = "match_result_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,14 +20,19 @@ public class MatchResult extends BaseEntity {
     private Match match;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team1_id")
-    private MatchTeam matchTeam1;
+    @JoinColumn(name = "home_team_id")
+    private MatchTeam homeTeam;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team2_id")
-    private MatchTeam matchTeam2;
+    @JoinColumn(name = "away_team_id")
+    private MatchTeam awayTeam;
 
-    private int team1Score;
-    private int team2Score;
-    private int matchOrder;
+    @Column(nullable = false)
+    private int homeScore = 0;
+
+    @Column(nullable = false)
+    private int awayScore = 0;
+
+    @Column(nullable = false)
+    private int matchOrder = 1;
 }

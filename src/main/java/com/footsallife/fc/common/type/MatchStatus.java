@@ -1,4 +1,4 @@
-package com.footsallife.fc.domain;
+package com.footsallife.fc.common.type;
 
 public enum MatchStatus {
     SCHEDULED, // 예정
